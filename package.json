@@ -1,0 +1,27 @@
+{
+  "name": "dummflyx",
+  "version": "1.0.0",
+  "description": "Netflix Clone Repository for App Dev",
+  "main": "index.js",
+  "scripts": {
+    "dev": "react-scripts start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WorkingDummy/Dummflyx.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/WorkingDummy/Dummflyx/issues"
+  },
+  "homepage": "https://github.com/WorkingDummy/Dummflyx#readme",
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-scripts": "^5.0.1"
+  }
+}
