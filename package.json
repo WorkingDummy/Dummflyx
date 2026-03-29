@@ -1,27 +1,42 @@
 {
-  "name": "dummflyx",
-  "version": "1.0.0",
-  "description": "Netflix Clone Repository for App Dev",
-  "main": "index.js",
-  "scripts": {
-    "dev": "react-scripts start",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/WorkingDummy/Dummflyx.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/WorkingDummy/Dummflyx/issues"
-  },
-  "homepage": "https://github.com/WorkingDummy/Dummflyx#readme",
+  "name": "dummflyx-app-dev",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.14.0",
+    "movie-trailer": "^3.2.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "5.0.1",
+    "react-youtube": "^10.1.0",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

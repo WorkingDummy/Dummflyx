@@ -1,0 +1,53 @@
+.row {
+  margin-left: 20px;
+  color: white;
+}
+
+.row__posters {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+}
+
+.row__posters::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar for a clean Netflix look */
+}
+
+.row__poster {
+  object-fit: contain;
+  width: 100%;
+  max-height: 100px;
+  margin-right: 10px;
+  transition: transform 450ms;
+}
+
+.row__youtube {
+  width: 100%;
+  max-height: 0; /* Hidden by default */
+  overflow: hidden;
+  transition: max-height 0.8s ease-in-out; /* The smooth slide effect */
+}
+
+.row__youtube--active {
+  max-height: 500px; /* Expands to show the video */
+  padding: 40px 0;   /* Adds some breathing room */
+}
+
+/* Optional: Add a subtle scale effect to posters on hover */
+.row__poster {
+  transition: transform 450ms;
+}
+
+.row__poster:hover {
+  transform: scale(1.08);
+  opacity: 1;
+}
+
+.row__posterLarge {
+  max-height: 250px;
+}
+
+.row__posterLarge:hover {
+  transform: scale(1.10);
+}
