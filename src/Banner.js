@@ -9,7 +9,7 @@ function Banner() {
   const [movie, setMovie] = useState(null);
   const [allMovies, setAllMovies] = useState([]);
   const [trailerId, setTrailerId] = useState("");
-  const [isMuted, setIsMuted] = useState(true); // State to control audio
+  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -28,7 +28,7 @@ function Banner() {
       const randomMovie = allMovies[Math.floor(Math.random() * allMovies.length)];
       setMovie(randomMovie);
       setTrailerId(""); 
-      setIsMuted(true); // Reset to muted when movie changes
+      setIsMuted(true);
     }, 15000); 
 
     return () => clearInterval(interval); 
@@ -47,12 +47,10 @@ function Banner() {
     }
   }, [movie]);
 
-  // Handler for Play Button (Toggles Sound)
   const handlePlay = () => {
     setIsMuted(!isMuted);
   };
 
-  // Handler for My List Button
   const handleMyList = () => {
     alert(`${movie?.title || movie?.name} has been added to your list!`);
   };
@@ -65,7 +63,7 @@ function Banner() {
       controls: 0,
       rel: 0,
       showinfo: 0,
-      mute: isMuted ? 1 : 0, // Controlled by state
+      mute: isMuted ? 1 : 0,
       loop: 1,
     },
   };
@@ -97,7 +95,6 @@ function Banner() {
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
         <div className="banner__buttons">
-          {/* Added onClick handlers */}
           <button className="banner__button" onClick={handlePlay}>
             {isMuted ? "Play (Unmute)" : "Mute"}
           </button>

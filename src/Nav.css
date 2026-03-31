@@ -4,7 +4,7 @@
   width: 100%;
   padding: 20px;
   height: 30px;
-  z-index: 100; /* Increased to stay above rows */
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,21 +17,18 @@
 }
 
 .nav__logo {
-  /* Removed position: fixed */
   width: 80px;
   object-fit: contain;
   cursor: pointer;
 }
 
-/* Container for everything on the right */
 .nav__right {
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-right: 40px; /* Adjusts distance from right edge */
+  margin-right: 40px;
 }
 
-/* Search bar styling */
 .nav__search {
   display: flex;
   align-items: center;
@@ -70,7 +67,6 @@
 }
 
 .nav__avatar {
-  /* Removed position: fixed */
   width: 30px;
   object-fit: contain;
   cursor: pointer;
