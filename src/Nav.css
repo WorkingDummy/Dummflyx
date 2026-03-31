@@ -4,13 +4,12 @@
   width: 100%;
   padding: 20px;
   height: 30px;
-  z-index: 1;
+  z-index: 100; /* Increased to stay above rows */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1;
-  transition-timing-function: ease-in;
   transition: all 0.5s;
+  transition-timing-function: ease-in;
 }
 
 .nav__black {
@@ -18,15 +17,60 @@
 }
 
 .nav__logo {
-  position: fixed;
-  left: 20px;
+  /* Removed position: fixed */
   width: 80px;
   object-fit: contain;
+  cursor: pointer;
+}
+
+/* Container for everything on the right */
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-right: 40px; /* Adjusts distance from right edge */
+}
+
+/* Search bar styling */
+.nav__search {
+  display: flex;
+  align-items: center;
+  transition: all 0.4s ease;
+  padding: 5px;
+}
+
+.nav__search--active {
+  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.nav__searchBtn {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  outline: none;
+}
+
+.nav__input {
+  width: 0;
+  opacity: 0;
+  background: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  transition: all 0.4s ease;
+}
+
+.nav__search--active .nav__input {
+  width: 200px;
+  opacity: 1;
+  padding: 0 10px;
 }
 
 .nav__avatar {
-  position: fixed;
-  right: 20px;
+  /* Removed position: fixed */
   width: 30px;
   object-fit: contain;
   cursor: pointer;
@@ -34,5 +78,5 @@
 }
 
 .nav__avatar:hover {
-  transform:scale(1.1);
+  transform: scale(1.1);
 }
