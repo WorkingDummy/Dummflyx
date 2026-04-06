@@ -1,109 +1,82 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from './axios';
 import requests from './request';
-import YouTube from 'react-youtube';
-import movieTrailer from 'movie-trailer';
 import './Banner.css';
 
 function Banner() {
-  const [movie, setMovie] = useState(null);
-  const [allMovies, setAllMovies] = useState([]);
-  const [trailerId, setTrailerId] = useState("");
-  const [isMuted, setIsMuted] = useState(true);
+  const [movie, setMovie] = useState([]);
+  const [allMovies, setAllMovies] = useState([]); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
+      // Fetching Netflix Originals for the banner
       const request = await axios.get(requests.fetchNetflixOriginals);
       const results = request.data.results;
       setAllMovies(results);
-      setMovie(results[Math.floor(Math.random() * results.length)]);
+      
+      // Set initial random movie
+      setMovie(
+        results[Math.floor(Math.random() * results.length)]
+      );
     }
     fetchData();
   }, []);
 
+  // Movie Rotation Logic: Swaps the banner movie every 10 seconds
   useEffect(() => {
     if (allMovies.length === 0) return;
 
     const interval = setInterval(() => {
-      const randomMovie = allMovies[Math.floor(Math.random() * allMovies.length)];
-      setMovie(randomMovie);
-      setTrailerId(""); 
-      setIsMuted(true);
-    }, 15000); 
+      setMovie(allMovies[Math.floor(Math.random() * allMovies.length)]);
+    }, 10000); 
 
     return () => clearInterval(interval); 
   }, [allMovies]);
-
-  useEffect(() => {
-    if (movie) {
-      movieTrailer(movie?.name || movie?.title || movie?.original_name || "")
-        .then((url) => {
-          if (url) {
-            const urlParams = new URLSearchParams(new URL(url).search);
-            setTrailerId(urlParams.get("v"));
-          }
-        })
-        .catch((error) => console.log("Banner Trailer Error:", error));
-    }
-  }, [movie]);
-
-  const handlePlay = () => {
-    setIsMuted(!isMuted);
-  };
-
-  const handleMyList = () => {
-    alert(`${movie?.title || movie?.name} has been added to your list!`);
-  };
-
-  const opts = {
-    height: "100%",
-    width: "100%",
-    playerVars: {
-      autoplay: 1,
-      controls: 0,
-      rel: 0,
-      showinfo: 0,
-      mute: isMuted ? 1 : 0,
-      loop: 1,
-    },
-  };
 
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
 
+  // Navigate to the internal /mylist route
+  const handleMyListClick = () => {
+    navigate("/mylist");
+  };
+
   return (
-    <header className="banner"
+    <header 
+      className="banner"
       style={{
         backgroundSize: "cover",
         backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
         backgroundPosition: "center center",
       }}
     >
-      {trailerId && (
-        <div className="banner__videoContainer">
-          <YouTube 
-            videoId={trailerId} 
-            opts={opts} 
-            className="banner__video"
-          />
-        </div>
-      )}
-
       <div className="banner__contents">
         <h1 className="banner__title">
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
+
+        {/* FIXED: banner__buttons container is essential for the 
+          flex-wrap CSS logic to keep buttons on-screen 
+        */}
         <div className="banner__buttons">
-          <button className="banner__button" onClick={handlePlay}>
-            {isMuted ? "Play (Unmute)" : "Mute"}
-          </button>
-          <button className="banner__button" onClick={handleMyList}>
+          <button className="banner__button">Play</button>
+          
+          <button 
+            className="banner__button" 
+            onClick={handleMyListClick}
+          >
             My List
           </button>
         </div>
-        <h1 className="banner__description">{truncate(movie?.overview, 150)}</h1>
+
+        <h1 className="banner__description">
+          {truncate(movie?.overview, 150)}
+        </h1>
       </div>
+
       <div className="banner--fadeBottom" />
     </header>
   );

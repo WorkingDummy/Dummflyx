@@ -1,15 +1,43 @@
+/* ============================================================
+   1. GLOBAL SAFETY RESET - KILLS THE "BLUE WAVE" FOR GOOD
+   ============================================================ */
+.nav__avatar, 
+.nav__avatarMobile {
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
+  object-fit: cover !important;
+  flex-shrink: 0 !important;
+  /* UPDATED: Netflix uses slightly rounded corners, not circles */
+  border-radius: 4px !important; 
+  clip-path: none !important;
+  transform: none !important;
+  background-color: transparent !important;
+}
+
+/* Global Box-Sizing Fix */
+.nav, .nav * {
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   2. DESKTOP STYLES (Default / Global)
+   ============================================================ */
+
 .nav {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 20px;
-  height: 30px;
+  height: 60px; 
+  padding: 0 20px;
   z-index: 100;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
   align-items: center;
-  transition: all 0.5s;
-  transition-timing-function: ease-in;
+  transition: all 0.5s ease-in;
+  max-width: 100vw;
+  overflow: hidden; 
 }
 
 .nav__black {
@@ -20,25 +48,52 @@
   width: 80px;
   object-fit: contain;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .nav__right {
   display: flex;
   align-items: center;
-  gap: 20px;
-  margin-right: 40px;
+  gap: 15px; 
+  flex-shrink: 0;
+  background: none !important;
 }
 
+/* Hide standard Sign Out button on ALL screens (now in hamburger) */
+.nav__right .nav__signOutBtn {
+  display: none !important;
+}
+
+/* Show Hamburger on ALL screens */
+.nav__hamburger {
+  display: flex; 
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 10;
+}
+
+.nav__hamburger span {
+  width: 24px;
+  height: 3px;
+  background-color: white;
+}
+
+/* --- Search Bar --- */
 .nav__search {
   display: flex;
   align-items: center;
   transition: all 0.4s ease;
-  padding: 5px;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.4); 
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
 }
 
 .nav__search--active {
   border: 1px solid white;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .nav__searchBtn {
@@ -46,8 +101,9 @@
   border: none;
   color: white;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   outline: none;
+  opacity: 0.9;
 }
 
 .nav__input {
@@ -61,18 +117,147 @@
 }
 
 .nav__search--active .nav__input {
-  width: 200px;
+  width: 180px; 
   opacity: 1;
   padding: 0 10px;
 }
 
-.nav__avatar {
-  width: 30px;
-  object-fit: contain;
-  cursor: pointer;
-  transition: transform 0.2s;
+/* --- Menu Drawer Global Logic --- */
+.nav__menuMobile {
+  position: fixed;
+  top: 0;
+  right: -100%; 
+  width: 300px; /* Default desktop/tablet width */
+  height: 100vh;
+  background-color: #141414;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  box-shadow: -5px 0px 15px rgba(0,0,0,0.5);
 }
 
-.nav__avatar:hover {
-  transform: scale(1.1);
+.nav__menuMobile--open {
+  right: 0; 
+}
+
+.nav__menuContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 60px; 
+  color: #e5e5e5;
+}
+
+.nav__avatarMobile {
+  width: 80px !important;
+  height: 80px !important;
+  max-width: 80px !important;
+  max-height: 80px !important;
+  /* UPDATED: Rounded square for Netflix feel */
+  border-radius: 8px !important; 
+  /* UPDATED: Removed the white border from Facebook icon */
+  border: none !important; 
+  margin-bottom: 30px;
+  display: block !important;
+  cursor: pointer;
+}
+
+.nav__menuContent p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav__menuContent p:hover {
+  color: white;
+}
+
+.nav__menuDivider {
+  width: 100%;
+  height: 1px;
+  background-color: #333;
+  margin: 10px 0 25px;
+}
+
+.nav__actionBtn {
+  width: 100%;
+  padding: 12px 0;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  display: block !important; 
+  border: none;
+  cursor: pointer;
+}
+
+.nav__signOutBtnMobile {
+  background-color: #e50914;
+  color: white;
+}
+
+.nav__closeMenu {
+  background-color: transparent;
+  color: #b3b3b3;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* ============================================================
+   3. TABLET STYLES (601px to 1024px)
+   ============================================================ */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .nav {
+    padding: 0 30px;
+    height: 70px;
+  }
+
+  .nav__search {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .nav__search--active .nav__input {
+    width: 200px; 
+  }
+}
+
+/* ============================================================
+   4. MOBILE STYLES (0px to 600px)
+   ============================================================ */
+
+@media (max-width: 600px) {
+  .nav {
+    padding: 0 15px;
+  }
+
+  .nav__logo {
+    width: 60px;
+  }
+
+  .nav__search--active .nav__input {
+    width: 100px; 
+  }
+
+  .nav__menuMobile {
+    width: 100%; /* Full screen menu for mobile only */
+  }
+
+  .nav__avatarMobile {
+    width: 90px !important;
+    height: 90px !important;
+    max-width: 90px !important;
+    max-height: 90px !important;
+    /* Maintain square shape on mobile */
+    border-radius: 8px !important; 
+  }
 }

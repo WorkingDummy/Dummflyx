@@ -1,0 +1,105 @@
+.myList {
+  background-color: #111;
+  color: white;
+  min-height: 100vh;
+}
+
+.myList__container {
+  padding-top: 100px; /* Space for the Nav bar */
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.myList__container > h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+/* --- THE FIX: Controlled Grid --- */
+.myList__grid {
+  display: grid;
+  /* This creates a responsive grid where each item is at least 160px and at most 250px */
+  grid-template-columns: repeat(auto-fill, minmax(160px, 250px)); 
+  gap: 20px;
+  justify-content: start; /* Keeps items aligned to the left */
+}
+
+.myList__item {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  /* Ensures the container doesn't grow infinitely */
+  width: 100%;
+  aspect-ratio: 2 / 3; /* Standard movie poster ratio */
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.myList__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This prevents the image from stretching weirdly */
+  border-radius: 4px;
+}
+
+.myList__item:hover {
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+/* --- Remove Button Overlay --- */
+.myList__itemOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.myList__item:hover .myList__itemOverlay {
+  opacity: 1;
+}
+
+.myList__itemOverlay button {
+  background-color: #e50914;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* --- Mobile View Adjustments --- */
+@media (max-width: 600px) {
+  .myList__grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .myList__container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .myList__grid {
+    /* Forces 2 columns on tiny screens */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px;
+  }
+
+  .myList__container > h1 {
+    font-size: 1.5rem;
+  }
+}
