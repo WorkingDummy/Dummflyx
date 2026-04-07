@@ -1,4 +1,3 @@
-/* --- Vertical Grid for Search Results --- */
 .row__postersGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -22,7 +21,6 @@
   margin-top: 20px;
 }
 
-/* --- Standard Row Styles --- */
 .row {
   margin-left: 20px;
   color: white;
@@ -63,7 +61,6 @@
   transform: scale(1.10);
 }
 
-/* --- Expanded Detail View Container --- */
 .row__detailView {
   background-color: #111;
   padding: 40px;
@@ -72,7 +69,7 @@
   flex-direction: column;
   animation: expandDown 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   margin-top: 10px;
-  box-sizing: border-box; /* Ensures padding doesn't cause overflow */
+  box-sizing: border-box;
 }
 
 @keyframes expandDown {
@@ -107,7 +104,7 @@
   cursor: pointer;
   font-size: 1rem;
   transition: all 0.2s;
-  z-index: 101; /* Higher z-index to stay on top */
+  z-index: 101;
 }
 
 .row__closeButton:hover {
@@ -115,7 +112,6 @@
   color: black;
 }
 
-/* --- Movie Info Section --- */
 .row__movieInfo {
   margin-top: 30px;
   max-width: 900px;
@@ -130,7 +126,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 25px; /* Increased margin for better separation */
+  margin-bottom: 25px;
   gap: 15px;
 }
 
@@ -141,14 +137,14 @@
 }
 
 .row__addBtn, .row__removeBtn {
-  padding: 12px 24px; /* Slightly larger padding for better touch target */
+  padding: 12px 24px;
   cursor: pointer;
   font-weight: bold;
   border-radius: 4px;
   transition: all 0.2s;
   white-space: nowrap;
   font-size: 1rem;
-  z-index: 10; /* Ensure button stays on top of any descriptions */
+  z-index: 10;
 }
 
 .row__addBtn {
@@ -166,10 +162,9 @@
   font-size: 1rem;
   line-height: 1.6;
   color: #e5e5e5;
-  margin-top: 10px; /* Added margin to push text away from the button head */
+  margin-top: 10px;
 }
 
-/* --- Episodes Section --- */
 .row__episodes {
   margin-top: 40px;
   border-top: 1px solid #333;
@@ -192,8 +187,6 @@
   margin-right: 20px;
 }
 
-/* --- Responsive Fixes --- */
-
 @media (max-width: 768px) {
   .row {
     margin-left: 10px;
@@ -204,25 +197,24 @@
     gap: 10px;
   }
 
-  /* Force the header (Title + Button) to stack vertically for more room */
   .row__infoHead {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px; /* More space between title and button */
+    gap: 20px;
     margin-bottom: 30px;
   }
 
   .row__addBtn, .row__removeBtn {
     width: 100%; 
     text-align: center;
-    padding: 15px; /* Larger hit area for thumbs */
-    background-color: white; /* Make it high contrast on mobile so it's clearly a button */
+    padding: 15px;
+    background-color: white;
     color: black;
   }
 
   .row__detailView {
     padding: 20px;
-    padding-bottom: 50px; /* Extra bottom padding so it doesn't look cut off */
+    padding-bottom: 50px;
   }
 
   .row__youtubeContainer iframe {

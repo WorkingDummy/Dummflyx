@@ -6,7 +6,6 @@ import './Row.css';
 const base_url = "https://image.tmdb.org/t/p/original/";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-// 1. Accept userProfile as a prop (Nav is now handled by App.js)
 function MyList({ selectedProfile }) {
   const [myMovies, setMyMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -52,10 +51,8 @@ function MyList({ selectedProfile }) {
 
   return (
     <div className="myList">
-      {/* 2. Nav is REMOVED from here because it's handled in App.js */}
       
       <div className="myList__container">
-        {/* 3. Personalized title based on Active Profile */}
         <h1>{selectedProfile?.name}'s List</h1>
         
         {myMovies.length > 0 ? (

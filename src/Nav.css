@@ -9,14 +9,11 @@
   max-height: 32px !important;
   object-fit: cover !important;
   flex-shrink: 0 !important;
-  /* UPDATED: Netflix uses slightly rounded corners, not circles */
   border-radius: 4px !important; 
   clip-path: none !important;
   transform: none !important;
   background-color: transparent !important;
 }
-
-/* Global Box-Sizing Fix */
 .nav, .nav * {
   box-sizing: border-box;
 }
@@ -59,12 +56,10 @@
   background: none !important;
 }
 
-/* Hide standard Sign Out button on ALL screens (now in hamburger) */
 .nav__right .nav__signOutBtn {
   display: none !important;
 }
 
-/* Show Hamburger on ALL screens */
 .nav__hamburger {
   display: flex; 
   flex-direction: column;
@@ -80,7 +75,6 @@
   background-color: white;
 }
 
-/* --- Search Bar --- */
 .nav__search {
   display: flex;
   align-items: center;
@@ -122,12 +116,11 @@
   padding: 0 10px;
 }
 
-/* --- Menu Drawer Global Logic --- */
 .nav__menuMobile {
   position: fixed;
   top: 0;
   right: -100%; 
-  width: 300px; /* Default desktop/tablet width */
+  width: 300px;
   height: 100vh;
   background-color: #141414;
   display: flex;
@@ -157,9 +150,7 @@
   height: 80px !important;
   max-width: 80px !important;
   max-height: 80px !important;
-  /* UPDATED: Rounded square for Netflix feel */
   border-radius: 8px !important; 
-  /* UPDATED: Removed the white border from Facebook icon */
   border: none !important; 
   margin-bottom: 30px;
   display: block !important;
@@ -249,7 +240,7 @@
   }
 
   .nav__menuMobile {
-    width: 100%; /* Full screen menu for mobile only */
+    width: 100%;
   }
 
   .nav__avatarMobile {

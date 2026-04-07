@@ -8,7 +8,6 @@ function Nav({ searchQuery, setSearchQuery, setIsLoggedIn, userProfile }) {
   const [menuOpen, setMenuOpen] = useState(false); 
   const navigate = useNavigate();
 
-  // Default fallback image if userProfile is missing
   const defaultAvatar = "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png";
 
   useEffect(() => {
@@ -71,7 +70,6 @@ function Nav({ searchQuery, setSearchQuery, setIsLoggedIn, userProfile }) {
 
       <div className="nav__right">
         <div className="nav__hamburger" onClick={toggleMenu}>
-          {/* Added fallback image check here */}
           <img 
             src={userProfile?.image || defaultAvatar} 
             alt="active profile" 

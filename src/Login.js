@@ -4,7 +4,6 @@ import './Login.css';
 function Login({ onSignIn }) {
   return (
     <div className="login">
-      {/* Netflix Logo - Optional: Add your logo img here */}
       <img 
         className="login__logo"
         src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" 
@@ -33,7 +32,6 @@ function Login({ onSignIn }) {
           <div className="login__footer">
   <p>
     <span className="footer__gray">New to Netflix?</span>{" "}
-    {/* Wrap "Sign up now" in an anchor tag */}
     <a 
       href="https://youtu.be/RrESvSRNpeo?si=H81QKkHD5DPKQ17q" 
       target="_blank" 

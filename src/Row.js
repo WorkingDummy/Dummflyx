@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "./axios";
 import "./Row.css";
 
-const base_url = "https://image.tmdb.org/t/p/w500/"; // Switched to w500 for faster grid loading
+const base_url = "https://image.tmdb.org/t/p/w500/";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 function Row({ title, fetchUrl, isLargeRow, searchQuery }) {
@@ -73,7 +73,6 @@ function Row({ title, fetchUrl, isLargeRow, searchQuery }) {
             key={movie.id}
             onClick={() => handleClick(movie)}
             className={`row__poster ${isLargeRow && "row__posterLarge"} ${isSearching && "row__posterGridItem"}`}
-            /* FALLBACK LOGIC: If poster_path is null, show a placeholder */
             src={movie.poster_path 
               ? `${base_url}${movie.poster_path}` 
               : "https://via.placeholder.com/500x750?text=No+Image+Available"}

@@ -11,12 +11,10 @@ function Banner() {
 
   useEffect(() => {
     async function fetchData() {
-      // Fetching Netflix Originals for the banner
       const request = await axios.get(requests.fetchNetflixOriginals);
       const results = request.data.results;
       setAllMovies(results);
       
-      // Set initial random movie
       setMovie(
         results[Math.floor(Math.random() * results.length)]
       );
@@ -24,7 +22,6 @@ function Banner() {
     fetchData();
   }, []);
 
-  // Movie Rotation Logic: Swaps the banner movie every 10 seconds
   useEffect(() => {
     if (allMovies.length === 0) return;
 
@@ -57,11 +54,7 @@ function Banner() {
         <h1 className="banner__title">
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
-
-        {/* FIXED: banner__buttons container is essential for the 
-          flex-wrap CSS logic to keep buttons on-screen 
-        */}
-        <div className="banner__buttons">
+          <div className="banner__buttons">
           <button className="banner__button">Play</button>
           
           <button 
