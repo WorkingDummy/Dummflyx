@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, Navigate, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion'; // 1. Import Framer Motion
+import { motion, AnimatePresence } from 'framer-motion';
 import Row from './Row';
 import Banner from './Banner';
 import Nav from './Nav';
@@ -12,7 +12,6 @@ import requests from './request';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-// 2. Simple animation wrapper for pages
 const PageWrapper = ({ children }) => (
   <motion.div
     initial={{ opacity: 0 }}
@@ -27,7 +26,7 @@ const PageWrapper = ({ children }) => (
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
-  const location = useLocation(); // 3. Track current path for transitions
+  const location = useLocation();
 
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem("isLoggedIn") === "true"
@@ -55,7 +54,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* 4. AnimatePresence handles the exit/enter timing */}
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Navigate to="/login" replace />} />
