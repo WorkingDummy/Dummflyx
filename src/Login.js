@@ -38,12 +38,12 @@ function Login({ onSignIn }) {
       rel="noopener noreferrer" 
       className="footer__link"
     >
-      Sign up now.
+      Sign up
     </a>
   </p>
   
   <p className="footer__captcha">
-    This page is protected by Google reCAPTCHA to ensure you're not a bot. 
+   you're a bot. 
     <a 
       href="https://youtu.be/RrESvSRNpeo?si=H81QKkHD5DPKQ17q" 
       target="_blank" 
