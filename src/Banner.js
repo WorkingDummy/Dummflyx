@@ -36,7 +36,6 @@ function Banner() {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
 
-  // Navigate to the internal /mylist route
   const handleMyListClick = () => {
     navigate("/mylist");
   };
